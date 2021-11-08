@@ -2,13 +2,13 @@
 const path = require('path');
 const { google } = require('googleapis');
 
-module.exports.renderSecondary4Checklist = (req, res) => {
-    res.sendFile(path.join(__dirname, '/..', 'views', 'secondary4Checklist.html'));
+module.exports.renderWashPlantChecklist = (req, res) => {
+    res.sendFile(path.join(__dirname, '/..', 'views', 'washPlantChecklist.html'));
 };
 
 
 
-module.exports.postSecondary4Checklist = async (req, res) => {
+module.exports.postWashPlantChecklist = async (req, res) => {
 
     const auth = new google.auth.GoogleAuth({
         keyFile: "API-Credentials/credentials.json",
@@ -157,6 +157,6 @@ module.exports.postSecondary4Checklist = async (req, res) => {
 
 
     // res.redirect("/")
-    res.redirect("/secondary4Checklist");
+    res.redirect("/washPlantChecklist");
 
 }

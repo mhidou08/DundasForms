@@ -2,13 +2,13 @@
 const path = require('path');
 const { google } = require('googleapis');
 
-module.exports.renderSecondary1Checklist = (req, res) => {
-    res.sendFile(path.join(__dirname, '/..', 'views', 'secondary1Checklist.html'));
+module.exports.renderSecondaryChecklist = (req, res) => {
+    res.sendFile(path.join(__dirname, '/..', 'views', 'secondaryChecklist.html'));
 };
 
 
 
-module.exports.postSecondary1Checklist = async (req, res) => {
+module.exports.postSecondaryChecklist = async (req, res) => {
 
     const auth = new google.auth.GoogleAuth({
         keyFile: "API-Credentials/credentials.json",
@@ -27,27 +27,41 @@ module.exports.postSecondary1Checklist = async (req, res) => {
     //collect data from req.body by destructuring the object. These are the variables that represent each section of the form filled
     const {
         employee, date, shift, sections,
-        d1302, g1302, dst1302, ndst1302, hg1302, hd1302, p1302,
-        d1032, g1032, dst1032, ndst1032, hg1032, hd1032, p1032,
-        d1028, g1028, dst1028, ndst1028, hg1028, hd1028, p1028,
-        d2349, g2349, dst2349, ndst2349, hg2349, hd2349, p2349,
-        d4055, g4055, gt4055, hg4055, hd4055, p4055,
-        d4058, g4058, gt4058, hg4058, hd4058, p4058,
-        d4045, g4045, gt4045, hg4045, hd4045, p4045,
-        d4120, g4120, gt4120, hg4120, hd4120, p4120,
-        d2009, g2009, gt2009, hg2009, hd2009, p2009,
+        d9009, g9009, nst9009, sst9009, hg9009, hd9009, p9009,
+        d9015, g9015, gt9015, hg9015, hd9015, p9015,
+        d4034, g4034, gt4034, hg4034, hd4034, p4034,
+        d4035, g4035, gt4035, hg4035, hd4035, p4035,
+        d4036, g4036, gt4036, hg4036, hd4036, p4036,
+        d4037, g4037, gt4037, hg4037, hd4037, p4037,
+        d4038, g4038, gt4038, hg4038, hd4038, p4038,
+        d4039, g4039, gt4039, hg4039, hd4039, p4039,
+        d4040, g4040, gt4040, hg4040, hd4040, p4040,
+        d4062, g4062, gt4062, hg4062, hd4062, p4062,
+        d4142, g4142, gt4142, hg4142, hd4142, p4142,
+        d4048, g4048, gt4048, hg4048, hd4048, p4048,
+        d4049, g4049, gt4049, hg4049, hd4049, p4049,
+        d4050, g4050, gt4050, hg4050, hd4050, p4050,
+        d4051, g4051, gt4051, hg4051, hd4051, p4051,
+        d4057, g4057, gt4057, hg4057, hd4057, p4057,
+
+
     } = req.body;
 
-
     const defectives = {
-        d1302: d1302, d1032: d1032, d1028: d1028,
-        d2349: d2349, d4055: d4055, d4058: d4058,
-        d4045: d4045, d4120: d4120, d2009: d2009,
+        d9009: d9009, d9015: d9015, d4034: d4034,
+        d4035: d4035, d4036: d4036, d4037: d4037,
+        d4038: d4038, d4039: d4039, d4040: d4040,
+        d4062: d4062, d4142: d4142, d4048: d4048,
+        d4049: d4049, d4050: d4050, d4051: d4051,
+        d4057: d4057
     }
     const guards = {
-        g1302: g1302, g1032: g1032, g1028: g1028,
-        g2349: g2349, g4055: g4055, g4058: g4058,
-        g4045: g4045, g4120: g4120, g2009: g2009,
+        g9009: g9009, g9015: g9015, g4034: g4034,
+        g4035: g4035, g4036: g4036, g4037: g4037,
+        g4038: g4038, g4039: g4039, g4040: g4040,
+        g4062: g4062, g4142: g4142, g4048: g4048,
+        g4049: g4049, g4050: g4050, g4051: g4051,
+        g4057: g4057
     }
     //analyzes if defectives are checked or if guards are unchecked
     const defectArray = []; //array is empty, but will systematically input any defects or issues into it
@@ -73,14 +87,14 @@ module.exports.postSecondary1Checklist = async (req, res) => {
     await googleSheets.spreadsheets.values.append({
         auth,
         spreadsheetId,
-        range: "Sec-1!A:AB", //state the horizontal range and which sheet you are appending data to
+        range: "Sec-3!A:AB", //state the horizontal range and which sheet you are appending data to
         valueInputOption: "USER_ENTERED", //This will convert data into proper formats (like date into date not string), so won't take raw data
         resource: {
             values: [
                 [date, employee, shift,
-                    dst1302, ndst1302, dst1032, ndst1032,
-                    dst1028, ndst1028, dst2349, ndst2349,
-                    gt4055, gt4058, gt4045, gt4120, gt2009,
+                    nst9009, sst9009, gt9015, gt4034, gt4035, gt4036,
+                    gt4037, gt4038, gt4039, gt4040, gt4062, gt4142,
+                    gt4048, gt4049, gt4050, gt4051, gt4057,
                     isAllGuardsChecked, defectsExist, '-',
                 ], //these are the values that will be input into a single row, order matters
             ]
@@ -88,29 +102,36 @@ module.exports.postSecondary1Checklist = async (req, res) => {
     });
 
     const allDefects = [
-        hd1302, hd1032, hd1028, hd2349, hd4055,
-        hd4058, hd4045, hd4120, hd2009, hg1302,
-        hg1032, hg1028, hg2349, hg4055,
-        hg4058, hg4045, hg4120, hg2009,
+        hd9009, hd9015, hd4034, hd4035, hd4036,
+        hd4037, hd4038, hd4039, hd4040, hd4062,
+        hd4142, hd4048, hd4049, hd4050, hd4051,
+        hd4057, hg9009, hg9015, hg4034, hg4035,
+        hg4036, hg4037, hg4038, hg4039, hg4040,
+        hg4062, hg4142, hg4048, hg4049, hg4050,
+        hg4051, hg4057
     ]
 
     const prefixes = [
-        '1441302', '1741032', '1741028', '10142349', '1444055',
-        '1444058', '1444045', '1444120', '1442009',
+        '1739009', '1439015', '1444034', '1444035',
+        '1444036', '1444037', '1444038', '1444039',
+        '1444040', '1444062', '1744142', '1444048',
+        '1444049', '1444050', '1444051', '1444057',
+
+
     ]
 
-    for (let i = 0; i < 9; i++) {
+    for (let i = 0; i < 16; i++) {
         if (allDefects[i]) {
             allDefects[i] = `${prefixes[i]}: ${allDefects[i]}`;
         }
     }
-
     const allDefectsString = allDefects.filter(Boolean).join("\n");
 
     const allPriorities = [
-        p1302, p1032, p1028, p2349,
-        p4055, p4058, p4045, p4120,
-        p2009,
+        p9009, p9015, p4034, p4035, p4036,
+        p4037, p4038, p4039, p4040, p4062,
+        p4142, p4048, p4049, p4050, p4051,
+        p4057
     ]
     const allPrioritiesString = allPriorities.filter(Boolean).join("\n");
 
@@ -132,6 +153,6 @@ module.exports.postSecondary1Checklist = async (req, res) => {
 
 
     // res.redirect("/")
-    res.redirect("/secondary1Checklist");
+    res.redirect("/secondaryChecklist");
 
 }

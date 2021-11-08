@@ -1,0 +1,27 @@
+{
+  "name": "lafargeforms",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "Juan De Leon",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "googleapis": "^81.0.0",
+    "nodemon": "^2.0.12"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/juanitosol/LafargeForms.git"
+  },
+  "bugs": {
+    "url": "https://github.com/juanitosol/LafargeForms/issues"
+  },
+  "homepage": "https://github.com/juanitosol/LafargeForms#readme",
+  "description": ""
+}

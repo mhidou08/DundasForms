@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap"
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <title>Brechin Secondary-2 Daily Checklist</title>
+    <title>Dundas Secondary Daily Checklist</title>
     <!-- Website Tab Title Can Be Changed^^^ -->
 </head>
 
@@ -23,9 +23,9 @@
         </div>
         <!-- Change Titles Below between h1 and h2 tags -->
         <h1>Dundas Daily Checklist</h1>
-        <h2>Primary</h2>
+        <h2>Secondary</h2>
     </header>
-    <form action="/submitDataP" method="POST" id="checklistForm" name="primaryForm">
+    <form action="/submitDataS" method="POST" id="checklistForm" name="secondaryForm">
         <!-- this is what controls the form and where it gets sent^^^!!! -->
         <section>
             <div class="formHeaderInfo">
@@ -91,16 +91,16 @@
             <div class="formInputs">
                 <!-- These are the Inputs for every specific Part the titles can be changed-->
                 <label class="spacing">
-                    <span>Inlet Temp (°F)</span>
+                    <span>Inlet Temp °F</span>
                     <input type="number" name="itCR1" pattern="[0-9]*" inputmode="numeric">
                 </label>
                 <label class="spacing">
-                    <span>Outlet Temp (°F)</span>
-                    <input type="number" name="ot9046" pattern="[0-9]*" inputmode="numeric">
+                    <span>Outlet Temp °F</span>
+                    <input type="number" name="otCR1" pattern="[0-9]*" inputmode="numeric">
                 </label>
                 <label class="spacing">
                     <span>Outlet PSI</span>
-                    <input type="number" name="op9046" pattern="[0-9]*" inputmode="numeric">
+                    <input type="number" name="opCR1" pattern="[0-9]*" inputmode="numeric">
                 </label>
             </div>
             <div class="formInputs">
@@ -168,19 +168,19 @@
                 <!-- These are the Inputs for every specific Part the titles can be changed-->
                 <label class="spacing">
                     <span>Inlet PSI</span>
-                    <input type="number" name="itCR1" pattern="[0-9]*" inputmode="numeric">
+                    <input type="number" name="ipCR2" pattern="[0-9]*" inputmode="numeric">
                 </label>
                 <label class="spacing">
                     <span>Inlet Flow</span>
-                    <input type="number" name="ot9046" pattern="[0-9]*" inputmode="numeric">
+                    <input type="number" name="ifCR2" pattern="[0-9]*" inputmode="numeric">
                 </label>
                 <label class="spacing">
                     <span>Outlet PSI</span>
-                    <input type="number" name="op9046" pattern="[0-9]*" inputmode="numeric">
+                    <input type="number" name="opCR2" pattern="[0-9]*" inputmode="numeric">
                 </label>
                 <label class="spacing">
                     <span>Outlet Flow</span>
-                    <input type="number" name="op9046" pattern="[0-9]*" inputmode="numeric">
+                    <input type="number" name="ofCR2" pattern="[0-9]*" inputmode="numeric">
                 </label>
             </div>
             <div class="formInputs">
@@ -221,19 +221,19 @@
                 <!-- These are the Inputs for every specific Part the titles can be changed-->
                 <label class="spacing">
                     <span>Inlet PSI</span>
-                    <input type="number" name="itCR1" pattern="[0-9]*" inputmode="numeric">
+                    <input type="number" name="itCR3" pattern="[0-9]*" inputmode="numeric">
                 </label>
                 <label class="spacing">
                     <span>Inlet Flow</span>
-                    <input type="number" name="ot9046" pattern="[0-9]*" inputmode="numeric">
+                    <input type="number" name="ifCR3" pattern="[0-9]*" inputmode="numeric">
                 </label>
                 <label class="spacing">
                     <span>Outlet PSI</span>
-                    <input type="number" name="op9046" pattern="[0-9]*" inputmode="numeric">
+                    <input type="number" name="opCR3" pattern="[0-9]*" inputmode="numeric">
                 </label>
                 <label class="spacing">
                     <span>Outlet Flow</span>
-                    <input type="number" name="op9046" pattern="[0-9]*" inputmode="numeric">
+                    <input type="number" name="ofCR3" pattern="[0-9]*" inputmode="numeric">
                 </label>
             </div>
             <div class="formInputs">
@@ -300,16 +300,16 @@
             <div class="formInputs">
                 <!-- These are the Inputs for every specific Part the titles can be changed-->
                 <label class="spacing">
-                    <span>Oil Return</span>
-                    <input type="number" name="itCR1" pattern="[0-9]*" inputmode="numeric">
+                    <span>Oil Return °F</span>
+                    <input type="number" name="orCR4" pattern="[0-9]*" inputmode="numeric">
                 </label>
                 <label class="spacing">
                     <span>Oil Out PSI</span>
-                    <input type="number" name="ot9046" pattern="[0-9]*" inputmode="numeric">
+                    <input type="number" name="oopCR4" pattern="[0-9]*" inputmode="numeric">
                 </label>
                 <label class="spacing">
-                    <span>Oil Out</span>
-                    <input type="number" name="op9046" pattern="[0-9]*" inputmode="numeric">
+                    <span>Oil Out °F</span>
+                    <input type="number" name="oofCR4" pattern="[0-9]*" inputmode="numeric">
                 </label>
             </div>
             <div class="formInputs">
@@ -2260,7 +2260,7 @@
             </div>
         </div>
         <div id="loader"></div>
-        <input type="hidden" name="sections" id="" value="Primary">
+        <input type="hidden" name="sections" id="" value="Secondary">
     </form>
 
 </body>

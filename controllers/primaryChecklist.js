@@ -27,26 +27,37 @@ module.exports.postPrimaryChecklist = async (req, res) => {
     //collect data from req.body by destructuring the object. These are the variables that represent each section of the form filled
     const {
         employee, date, shift, sections,
-        d4180, g4180, gt4180, hg4180, hd4180, p4180,
-        d4179, g4179, gt4179, hg4179, hd4179, p4179,
-        d4178, g4178, gt4178, hg4178, hd4178, p4178,
-        d0004, g0004, dst0004, ndst0004, hg0004, hd0004, p0004,
-        gHydrBreaker, hgHydrBreaker,
-        d9046, g9046, dst9046, ndst9046, hg9046, hd9046, p9046,
-        gBeltScale, hgBeltScale,
+        gGYRATORY, dGYRATORY, hgGYRATORY, hdGYRATORY, pGYRATORY,
+        gAISCO, dAISCO, hgAISCO, hdAISCO, pAISCO,
+        gTELEDYNE, dTELEDYNE, hgTELEDYNE, hdTELEDYNE, pTELEDYNE,
+        gPUMP, dPUMP, hgPUMP, hdPUMP, pPUMP,
+        gSUB, dSUB, hgSUB, hdSUB, pSUB,
+        gBELT, dBELT, hgBELT, hdBELT, pBELT,
+        gSTACKER, dSTACKER, hgSTACKER, hdSTACKER, pSTACKER,
+        gDUST, dDUST, hgDUST, hdDUST, pDUST,
+        gCOMPRESSOR, dCOMPRESSOR, hgCOMPRESSOR, hdCOMPRESSOR, pCOMPRESSOR,
+        gC1P, dC1P, hgC1P, hdC1P, pC1P,
+        gC2P, dC2P, hgC2P, hdC2P, pC2P,
+        gVF1, dVF1, hgVF1, hdVF1, pVF1,
+        gVF2, dVF2, hgVF2, hdVF2, pVF2,
+        gVF3, dVF3, hgVF3, hdVF3, pVF3,
+        gVF5, dVF5, hgVF5, hdVF5, pVF5,
 
     } = req.body;
 
 
 
     const defectives = {
-        d4180: d4180, d4179: d4179, d4178: d4178,
-        d0004: d0004, d9046: d9046
+        dGYRATORY: dGYRATORY, dAISCO: dAISCO, dTELEDYNE: dTELEDYNE,
+        dPUMP: dPUMP, dSUB: dSUB, gBELT: dBELT, dSTACKER: dSTACKER,
+        dDUST: dDUST, dCOMPRESSOR: dCOMPRESSOR, dC1P: dC1P, dC2P: dC2P,
+        dVF1: dVF1, dVF2: dVF2, dVF2: dVF2, dVF3: dVF3, dVF5: dVF5,
     }
     const guards = {
-        g4180: g4180, g4179: g4179, g4178: g4178,
-        g0004: g0004, g9046: g9046, gHydrBreaker: gHydrBreaker,
-        gBeltScale: gBeltScale
+        gGYRATORY: gGYRATORY, gAISCO: gAISCO, gTELEDYNE: gTELEDYNE,
+        gPUMP: gPUMP, gSUB: gSUB, gBELT: gBELT, gSTACKER: gSTACKER,
+        gDUST: gDUST, gCOMPRESSOR: gCOMPRESSOR, gC1P: gC1P, gC2P: gC2P,
+        gVF1: gVF1, gVF2: gVF2, gVF2: gVF2, gVF3: gVF3, gVF5: gVF5,
     }
 
     //analyzes if defectives are checked or if guards are unchecked
@@ -78,9 +89,6 @@ module.exports.postPrimaryChecklist = async (req, res) => {
         resource: {
             values: [
                 [date, employee, shift,
-                    gt4180, gt4179, gt4178,
-                    dst0004, ndst0004,
-                    dst9046, ndst9046,
                     isAllGuardsChecked, defectsExist, '-',
                 ], //these are the values that will be input into a single row, order matters
             ]
@@ -88,17 +96,18 @@ module.exports.postPrimaryChecklist = async (req, res) => {
     });
 
     const allDefects = [
-        hd4180, hd4179, hd4178, hd0004, hd9046, hg4180, hg4179,
-        hg4178, hg0004, hgHydrBreaker, hg9046,
-        hgBeltScale,
+        hdGYRATORY, hdAISCO, hdTELEDYNE, hdPUMP, hdSUB, hdBELT, hdSTACKER, hdDUST, hdCOMPRESSOR, hdC1P, hdC2P, hdVF1, hdVF2, hdVF3, hdVF5,
+        hgGYRATORY, hgAISCO, hgTELEDYNE, hgPUMP, hgSUB, hgBELT, hgSTACKER, hgDUST, hgCOMPRESSOR, hgC1P, hgC2P, hgVF1, hgVF2, hgVF3, hgVF5,
     ]
 
-    const prefixes = ['1444180', '1444179', '1444178', '1740004', '1639046'] // An array of prefixes for each defect
+    const prefixes = ['Gyratory', 'Aisco Feeder', 'Teledyne', 'Sump pump',
+        'Primary sub', 'Incline Stacker', 'Stacker', 'Dust Collector', 'Compressor',
+        'Cable Belt', 'Conveyor C1P', 'Stacker C2P', 'Feeder VF1', 'Feeder VF2', 'Feeder VF3', 'Feeder VF5'] // An array of prefixes for each defect
 
     //The for loop is used to cycle through 5 defects (hence why i = 0 and increases up to 5), 
     // and for each defect that has a message (giving it a truthy value), the corresponding prefix is then
     // addded infront of the defect message. It's important that the correct index of the prefix and defect match.
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 35; i++) {
         if (allDefects[i]) {
             allDefects[i] = `${prefixes[i]}: ${allDefects[i]}`;
         }
@@ -107,7 +116,9 @@ module.exports.postPrimaryChecklist = async (req, res) => {
     const allDefectsString = allDefects.filter(Boolean).join("\n");
 
     const allPriorities = [
-        p4180, p4179, p4178, p0004, p9046,
+        pGYRATORY, pAISCO, pTELEDYNE, pPUMP, pSUB,
+        pBELT, pSTACKER, pDUST, pCOMPRESSOR, pC1P,
+        pC2P, pVF1, pVF2, pVF3, pVF5,
     ]
     const allPrioritiesString = allPriorities.filter(Boolean).join("\n");
 
@@ -116,7 +127,7 @@ module.exports.postPrimaryChecklist = async (req, res) => {
         await googleSheets.spreadsheets.values.append({
             auth,
             spreadsheetId,
-            range: "BackLog!A:E",
+            range: "BackLog-P!A:E",
             valueInputOption: "USER_ENTERED",
             resource: {
                 values: [

@@ -1,4 +1,3 @@
-
 const path = require('path');
 const { google } = require('googleapis');
 
@@ -27,41 +26,74 @@ module.exports.postWashPlantChecklist = async (req, res) => {
     //collect data from req.body by destructuring the object. These are the variables that represent each section of the form filled
     const {
         employee, date, shift, sections,
-        d4076, g4076, gt4076, hg4076, hd4076, p4076,
-        d4079, g4079, gt4079, hg4079, hd4079, p4079,
-        d4800, g4800, gt4800, hg4800, hd4800, p4800,
-        d4278, g4278, gt4278, hg4278, hd4278, p4278,
-        d4031, g4031, gt4031, hg4031, hd4031, p4031,
-        d4032, g4032, gt4032, hg4032, hd4032, p4032,
-        d4117, g4117, gt4117, hg4117, hd4117, p4117,
-        d4123, g4123, gt4123, hg4123, hd4123, p4123,
-        d4116, g4116, gt4116, hg4116, hd4116, p4116,
-        d4046, g4046, gt4046, hg4046, hd4046, p4046,
-        d4047, g4047, gt4047, hg4047, hd4047, p4047,
-        d4118, g4118, gt4118, hg4118, hd4118, p4118,
-        d4077, g4077, gt4077, hg4077, hd4077, p4077,
-        d2007, g2007, gt2007, hg2007, hd2007, p2007,
-        d2010, g2010, gt2010, hg2010, hd2010, p2010,
-        d2025, g2025, gt2025, hg2025, hd2025, p2025,
-        d2023, g2023, gt2023, hg2023, hd2023, p2023,
-        d2270, g2270, gt2270, hg2270, hd2270, p2270,
+        gWS1, dWS1, hgWS1, hdWS1, pWS1, ftWS1, stWS1,
+        gWS2, dWS2, hgWS2, hdWS2, pWS2, ftWS2, stWS2,
+        gWS3, dWS3, hgWS3, hdWS3, pWS3, ftWS3, stWS3,
+        gWS4, dWS4, hgWS4, hdWS4, pWS4, ftWS4, stWS4,
+        gCLASS, dCLASS, hgCLASS, hdCLASS, pCLASS,
+        gSINGLE, dSINGLE, hgSINGLE, hdSINGLE, pSINGLE, ftSINGLE,
+        gTWIN, dTWIN, hgTWIN, hdTWIN, pTWIN, ftTWIN,
+        gWC1, dWC1, hgWC1, hdWC1, pWC1, ftWC1,
+        gWC2, dWC2, hgWC2, hdWC2, pWC2, ftWC2,
+        gWC3, dWC3, hgWC3, hdWC3, pWC3, ftWC3,
+        gWC4, dWC4, hgWC4, hdWC4, pWC4, ftWC4,
+        gW144, dW144, hgW144, hdW144, pW144, ftW144,
+        gW142, dW142, hgW142, hdW142, pW142, ftW142,
+        gWC5, dWC5, hgWC5, hdWC5, pWC5, ftWC5,
+        gWC6, dWC6, hgWC6, hdWC6, pWC6, ftWC6,
+        gWC6A, dWC6A, hgWC6A, hdWC6A, pWC6A, ftWC6A,
+        gWC7, dWC7, hgWC7, hdWC7, pWC7, ftWC7,
+        gWC8, dWC8, hgWC8, hdWC8, pWC8, ftWC8,
+        gWC9, dWC9, hgWC9, hdWC9, pWC9, ftWC9,
+        gWC146, dWC146, hgWC146, hdWC146, pWC146, ftWC146,
+        gWC10, dWC10, hgWC10, hdWC10, pWC10, ftWC10,
+        gWC11, dWC11, hgWC11, hdWC11, pWC11, ftWC11,
+        gW148, dW148, hgW148, hdW148, pW148, ftW148,
+        gFCN, dFCN, hgFCN, hdFCN, pFCN, ftFCN,
+        gST145, dST145, hgST145, hdST145, pST145, ftST145,
+        gST143, dST143, hgST143, hdST143, pST143, ftST143,
+        gST123, dST123, hgST123, hdST123, pST123, ftST123,
+        gST135, dST135, hgST135, hdST135, pST135, ftST135,
+        gST147, dST147, hgST147, hdST147, pST147, ftST147,
+        gST148, dST148, hgST148, hdST148, pST148, ftST148,
+        gCG1, dCG1, hgCG1, hdCG1, pCG1,
+        gCG2, dCG2, hgCG2, hdCG2, pCG2,
+        gCG3, dCG3, hgCG3, hdCG3, pCG3,
+        gCG4, dCG4, hgCG4, hdCG4, pCG4,
+        gCG5, dCG5, hgCG5, hdCG5, pCG5,
+        gCG6, dCG6, hgCG6, hdCG6, pCG6,
+        gSPUMP, dSPUMP, hgSPUMP, hdSPUMP, pSPUMP,
+        gFPUMP, dFPUMP, hgFPUMP, hdFPUMP, pFPUMP,
+        gNSS, dNSS, hgNSS, hdNSS, pNSS,
+        gSSS, dSSS, hgSSS, hdSSS, pSSS,
     } = req.body;
 
     const defectives = {
-        d4076: d4076, d4079: d4079, d4800: d4800,
-        d4278: d4278, d4031: d4031, d4032: d4032,
-        d4117: d4117, d4123: d4123, d4116: d4116,
-        d4046: d4046, d4047: d4047, d4118: d4118,
-        d4077: d4077, d2007: d2007, d2025: d2025,
-        d2023: d2023, d2270: d2270,
+        dWS1: dWS1, dWS2: dWS2, dWS3: dWS3, dWS4: dWS4,
+        dCLASS: dCLASS, dSINGLE: dSINGLE, dTWIN: dTWIN,
+        dWC1: dWC1, dWC2: dWC2, dWC3: dWC3, dWC4: dWC4,
+        dW144: dW144, dW142: dW142, dWC5: dWC5, dWC6: dWC6,
+        dWC6A: dWC6A, dWC7: dWC7, dWC8: dWC8, dWC9: dWC9,
+        dWC146: dWC146, dWC10: dWC10, dWC11: dWC11,
+        dW148: dW148, dFCN: dFCN, dST145: dST145, dST143: dST143,
+        dST123: dST123, dST135: dST135, dST147: dST147,
+        dST148: dST148, dCG1: dCG1, dCG2: dCG2, dCG3: dCG3,
+        dCG4: dCG4, dCG5: dCG5, dCG6: dCG6, dSPUMP: dSPUMP,
+        dFPUMP: dFPUMP, dNSS: dNSS, dSSS: dSSS,
     }
     const guards = {
-        g4076: g4076, g4079: g4079, g4800: g4800,
-        g4278: g4278, g4031: g4031, g4032: g4032,
-        g4117: g4117, g4123: g4123, g4116: g4116,
-        g4046: g4046, g4047: g4047, g4118: g4118,
-        g4077: g4077, g2007: g2007, g2025: g2025,
-        g2023: g2023, g2270: g2270,
+        gWS1: gWS1, gWS2: gWS2, gWS3: gWS3, gWS4: gWS4,
+        gCLASS: gCLASS, gSINGLE: gSINGLE, gTWIN: gTWIN,
+        gWC1: gWC1, gWC2: gWC2, gWC3: gWC3, gWC4: gWC4,
+        gW144: gW144, gW142: gW142, gWC5: gWC5, gWC6: gWC6,
+        gWC6A: gWC6A, gWC7: gWC7, gWC8: gWC8, gWC9: gWC9,
+        gWC146: gWC146, gWC10: gWC10, gWC11: gWC11,
+        gW148: gW148, gFCN: gFCN, gST145: gST145, gST143: gST143,
+        gST123: gST123, gST135: gST135, gST147: gST147,
+        gST148: gST148, gCG1: gCG1, gCG2: gCG2, gCG3: gCG3,
+        gCG4: gCG4, gCG5: gCG5, gCG6: gCG6, gSPUMP: gSPUMP,
+        gFPUMP: gFPUMP, gNSS: gNSS, gSSS: gSSS,
+
     }
     //analyzes if defectives are checked or if guards are unchecked
     const defectArray = []; //array is empty, but will systematically input any defects or issues into it
@@ -87,16 +119,19 @@ module.exports.postWashPlantChecklist = async (req, res) => {
     await googleSheets.spreadsheets.values.append({
         auth,
         spreadsheetId,
-        range: "Sec-4!A:AB", //state the horizontal range and which sheet you are appending data to
+        range: "Wash-Plant!A:AM", //state the horizontal range and which sheet you are appending data to
         valueInputOption: "USER_ENTERED", //This will convert data into proper formats (like date into date not string), so won't take raw data
         resource: {
             values: [
                 [
                     date, employee, shift,
-                    gt4076, gt4079, gt4800, gt4278, gt4031,
-                    gt4032, gt4117, gt4123, gt4116, gt4046,
-                    gt4047, gt4118, gt4077, gt2007, gt2025,
-                    gt2023, gt2270,
+                    ftWS1, stWS1, ftWS2, stWS2,
+                    ftWS3, stWS3, ftWS4, stWS4,
+                    ftSINGLE, ftTWIN, ftWC1, ftWC2, ftWC3, ftWC4,
+                    ftW144, ftW142, ftWC5, ftWC6, ftWC6A, ftWC7,
+                    ftWC8, ftWC9, ftWC146, ftWC10, ftWC11, ftW148,
+                    ftFCN, ftST145, ftST143, ftST123, ftST135,
+                    ftST147, ftST148,
                     isAllGuardsChecked, defectsExist, '-',
                 ], //these are the values that will be input into a single row, order matters
             ]
@@ -104,22 +139,22 @@ module.exports.postWashPlantChecklist = async (req, res) => {
     });
 
     const allDefects = [
-        hd4076, hd4079, hd4800, hd4278, hd4031,
-        hd4032, hd4117, hd4123, hd4116, hd4046,
-        hd4047, hd4118, hd4077, hd2007, hd2025,
-        hd2023, hd2270,
-        hg4076, hg4079, hg4800, hg4278, hg4031,
-        hg4032, hg4117, hg4123, hg4116, hg4046,
-        hg4047, hg4118, hg4077, hg2007, hg2025,
-        hg2023, hg2270,
+        hdWS1, hdWS2, hdWS3, hdWS4, hdCLASS, hdSINGLE, hdTWIN,
+        hdWC1, hdWC2, hdWC3, hdWC4, hdW144, hdW142, hdWC5, hdWC6,
+        hdWC6A, hdWC7, hdWC8, hdWC9, hdWC146, hdWC10, hdWC11,
+        hdW148, hdFCN, hdST145, hdST143, hdST123, hdST135, hdST147,
+        hdST148, hdCG1, hdCG2, hdCG3, hdCG4, hdCG5, hdCG6, hdSPUMP,
+        hdFPUMP, hdNSS, hdSSS,
+        hgWS1, hgWS2, hgWS3, hgWS4, hgCLASS, hgSINGLE, hgTWIN,
+        hgWC1, hgWC2, hgWC3, hgWC4, hgW144, hgW142, hgWC5, hgWC6,
+        hgWC6A, hgWC7, hgWC8, hgWC9, hgWC146, hgWC10, hgWC11,
+        hgW148, hgFCN, hgST145, hgST143, hgST123, hgST135, hgST147,
+        hgST148, hgCG1, hgCG2, hgCG3, hgCG4, hgCG5, hgCG6, hgSPUMP,
+        hgFPUMP, hgNSS, hgSSS,
     ]
 
     const prefixes = [
-        '1744076', '1744079', '1744800', '1444278',
-        '1444031', '1444032', '1444117', '1444123',
-        '1444116', '1444046', '1444047', '1444118',
-        '1744077', '1442007', '1442025', '1742023',
-        '1442270'
+        'WS1',
     ]
 
 
@@ -132,10 +167,12 @@ module.exports.postWashPlantChecklist = async (req, res) => {
     const allDefectsString = allDefects.filter(Boolean).join("\n");
 
     const allPriorities = [
-        p4076, p4079, p4800, p4278, p4031,
-        p4032, p4117, p4123, p4116, p4046,
-        p4047, p4118, p4077, p2007, p2025,
-        p2023, p2270,
+        pWS1, pWS2, pWS3, pWS4, pCLASS, pSINGLE, pTWIN,
+        pWC1, pWC2, pWC3, pWC4, pW144, pW142, pWC5, pWC6,
+        pWC6A, pWC7, pWC8, pWC9, pWC146, pWC10, pWC11,
+        pW148, pFCN, pST145, pST143, pST123, pST135, pST147,
+        pST148, pCG1, pCG2, pCG3, pCG4, pCG5, pCG6, pSPUMP,
+        pFPUMP, pNSS, pSSS,
     ]
     const allPrioritiesString = allPriorities.filter(Boolean).join("\n");
 
@@ -144,7 +181,7 @@ module.exports.postWashPlantChecklist = async (req, res) => {
         await googleSheets.spreadsheets.values.append({
             auth,
             spreadsheetId,
-            range: "BackLog!A:E",
+            range: "BackLog-WP!A:E",
             valueInputOption: "USER_ENTERED",
             resource: {
                 values: [

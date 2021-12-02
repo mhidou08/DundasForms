@@ -27,41 +27,98 @@ module.exports.postSecondaryChecklist = async (req, res) => {
     //collect data from req.body by destructuring the object. These are the variables that represent each section of the form filled
     const {
         employee, date, shift, sections,
-        d9009, g9009, nst9009, sst9009, hg9009, hd9009, p9009,
-        d9015, g9015, gt9015, hg9015, hd9015, p9015,
-        d4034, g4034, gt4034, hg4034, hd4034, p4034,
-        d4035, g4035, gt4035, hg4035, hd4035, p4035,
-        d4036, g4036, gt4036, hg4036, hd4036, p4036,
-        d4037, g4037, gt4037, hg4037, hd4037, p4037,
-        d4038, g4038, gt4038, hg4038, hd4038, p4038,
-        d4039, g4039, gt4039, hg4039, hd4039, p4039,
-        d4040, g4040, gt4040, hg4040, hd4040, p4040,
-        d4062, g4062, gt4062, hg4062, hd4062, p4062,
-        d4142, g4142, gt4142, hg4142, hd4142, p4142,
-        d4048, g4048, gt4048, hg4048, hd4048, p4048,
-        d4049, g4049, gt4049, hg4049, hd4049, p4049,
-        d4050, g4050, gt4050, hg4050, hd4050, p4050,
-        d4051, g4051, gt4051, hg4051, hd4051, p4051,
-        d4057, g4057, gt4057, hg4057, hd4057, p4057,
+        gCR1, hgCR1, hdCR1, dCR1, pCR1, itCR1, otCR1, opCR1,
+        gCR2, hgCR2, hdCR2, dCR2, pCR2, ipCR2, ifCR2, opCR2, ofCR2,
+        gCR3, hgCR3, hdCR3, dCR3, pCR3, ipCR3, ifCR3, opCR3, ofCR3,
+        gCR4, hgCR4, hdCR4, dCR4, pCR4, orCR4, oopCR4, oofCR4,
+        gS1A, hgS1A, hdS1A, dS1A, pS1A,
+        gS1B, hgS1B, hdS1B, dS1B, pS1B,
+        gS2A, hgS2A, hdS2A, dS2A, pS2A,
+        gS2B, hgS2B, hdS2B, dS2B, pS2B,
+        gS3A, hgS3A, hdS3A, dS3A, pS3A,
+        gS3B, hgS3B, hdS3B, dS3B, pS3B,
+        gS5, hgS5, hdS5, dS5, pS5,
+        gC1, hgC1, hdC1, dC1, pC1,
+        gC1A, hgC1A, hdC1A, dC1A, pC1A,
+        gC1B, hgC1B, hdC1B, dC1B, pC1B,
+        gC2, hgC2, hdC2, dC2, pC2,
+        gC3A, hgC3A, hdC3A, dC3A, pC3A,
+        gC3B, hgC3B, hdC3B, dC3B, pC3B,
+        gC4A, hgC4A, hdC4A, dC4A, pC4A,
+        gC4B, hgC4B, hdC4B, dC4B, pC4B,
+        gC5, hgC5, hdC5, dC5, pC5,
+        gC6, hgC6, hdC6, dC6, pC6,
+        gC7, hgC7, hdC7, dC7, pC7,
+        gC8, hgC8, hdC8, dC8, pC8,
+        gC9, hgC9, hdC9, dC9, pC9,
+        gC11, hgC11, hdC11, dC11, pC11,
+        gC12, hgC12, hdC12, dC12, pC12,
+        gC20, hgC20, hdC20, dC20, pC20,
+        gC21, hgC21, hdC21, dC21, pC21,
+        gFCD, hgFCD, hdFCD, dFCD, pFCD,
+        gCC1, hgCC1, hdCC1, dCC1, pCC1,
+        gCC3, hgCC3, hdCC3, dCC3, pCC3,
+        gCC4, hgCC4, hdCC4, dCC4, pCC4,
+        gCC5, hgCC5, hdCC5, dCC5, pCC5,
+        gCC6, hgCC6, hdCC6, dCC6, pCC6,
+        gCC7, hgCC7, hdCC7, dCC7, pCC7,
+        gCC9, hgCC9, hdCC9, dCC9, pCC9,
+        gCC10, hgCC10, hdCC10, dCC10, pCC10,
+        gCC11, hgCC11, hdCC11, dCC11, pCC11,
+        gCC12, hgCC12, hdCC12, dCC12, pCC12,
+        gCC13, hgCC13, hdCC13, dCC13, pCC13,
+        gST2, hgST2, hdST2, dST2, pST2,
+        gST3, hgST3, hdST3, dST3, pST3,
+        gST8, hgST8, hdST8, dST8, pST8,
+        gST9, hgST9, hdST9, dST9, pST9,
+        gBP1, hgBP1, hdBP1, dBP1, pBP1,
+        gBP2, hgBP2, hdBP2, dBP2, pBP2,
+        gBP3, hgBP3, hdBP3, dBP3, pBP3,
+        gBP4, hgBP4, hdBP4, dBP4, pBP4,
+        gVF4, hgVF4, hdVF4, dVF4, pVF4,
+        gVF6, hgVF6, hdVF6, dVF6, pVF6,
+        gVF7, hgVF7, hdVF7, dVF7, pVF7,
+        gVF8, hgVF8, hdVF8, dVF8, pVF8,
+        gVF9, hgVF9, hdVF9, dVF9, pVF9,
+        gVF10, hgVF10, hdVF10, dVF10, pVF10,
+        gVF11, hgVF11, hdVF11, dVF11, pVF11,
+        gVF12, hgVF12, hdVF12, dVF12, pVF12,
+        dBUILDINGS, pBUILDINGS
 
 
     } = req.body;
 
     const defectives = {
-        d9009: d9009, d9015: d9015, d4034: d4034,
-        d4035: d4035, d4036: d4036, d4037: d4037,
-        d4038: d4038, d4039: d4039, d4040: d4040,
-        d4062: d4062, d4142: d4142, d4048: d4048,
-        d4049: d4049, d4050: d4050, d4051: d4051,
-        d4057: d4057
+        dCR1: dCR1, dCR2: dCR2, dCR3: dCR3, dCR4: dCR4,
+        dS1A: dS1A, dS1B: dS1B, dS2A: dS2A, dS2B: dS2B,
+        dS3A: dS3A, dS3B: dS3B, dS5: dS5, dC1: dC1, dC1A: dC1A,
+        dC1B: dC1B, dC2: dC2, dC3A: dC3A, dC3B: dC3B, dC4A: dC4A,
+        dC4B: dC4B, dC5: dC5, dC6: dC6, dC7: dC7, gd8: dC8,
+        dC9: dC9, dC11: dC11, dC12: dC12, dC20: dC20, dC21: dC21,
+        dFCD: dFCD, dCC1: dCC1, dCC3: dCC3, dCC4: dCC4,
+        dCC5: dCC5, dCC6: dCC6, dCC7: dCC7, dCC9: dCC9,
+        dCC10: dCC10, dCC11: dCC11, dCC12: dCC12, dCC13: dCC13,
+        dST2: dST2, dST3: dST3, dST8: dST8, dST9: dST9,
+        dBP1: dBP1, dBP2: dBP2, dBP3: dBP3, dBP4: dBP4,
+        dVF4: dVF4, dVF6: dVF6, dVF7: dVF7, dVF8: dVF8,
+        dVF9: dVF9, dVF10: dVF10, dVF11: dVF11, dVF12: dVF12, dBUILDINGS: dBUILDINGS,
     }
     const guards = {
-        g9009: g9009, g9015: g9015, g4034: g4034,
-        g4035: g4035, g4036: g4036, g4037: g4037,
-        g4038: g4038, g4039: g4039, g4040: g4040,
-        g4062: g4062, g4142: g4142, g4048: g4048,
-        g4049: g4049, g4050: g4050, g4051: g4051,
-        g4057: g4057
+        gCR1: gCR1, gCR2: gCR2, gCR3: gCR3, gCR4: gCR4,
+        gS1A: gS1A, gS1B: gS1B, gS2A: gS2A, gS2B: gS2B,
+        gS3A: gS3A, gS3B: gS3B, gS5: gS5, gC1: gC1, gC1A: gC1A,
+        gC1B: gC1B, gC2: gC2, gC3A: gC3A, gC3B: gC3B, gC4A: gC4A,
+        gC4B: gC4B, gC5: gC5, gC6: gC6, gC7: gC7, gC8: gC8,
+        gC9: gC9, gC11: gC11, gC12: gC12, gC20: gC20, gC21: gC21,
+        gFCD: gFCD, gCC1: gCC1, gCC3: gCC3, gCC4: gCC4,
+        gCC5: gCC5, gCC6: gCC6, gCC7: gCC7, gCC9: gCC9,
+        gCC10: gCC10, gCC11: gCC11, gCC12: gCC12, gCC13: gCC13,
+        gST2: gST2, gST3: gST3, gST8: gST8, gST9: gST9,
+        gBP1: gBP1, gBP2: gBP2, gBP3: gBP3, gBP4: gBP4,
+        gVF4: gVF4, gVF6: gVF6, gVF7: gVF7, gVF8: gVF8,
+        gVF9: gVF9, gVF10: gVF10, gVF11: gVF11, gVF12: gVF12,
+
+
     }
     //analyzes if defectives are checked or if guards are unchecked
     const defectArray = []; //array is empty, but will systematically input any defects or issues into it
@@ -87,14 +144,15 @@ module.exports.postSecondaryChecklist = async (req, res) => {
     await googleSheets.spreadsheets.values.append({
         auth,
         spreadsheetId,
-        range: "Sec-3!A:AB", //state the horizontal range and which sheet you are appending data to
+        range: "Secondary!A:AB", //state the horizontal range and which sheet you are appending data to
         valueInputOption: "USER_ENTERED", //This will convert data into proper formats (like date into date not string), so won't take raw data
         resource: {
             values: [
                 [date, employee, shift,
-                    nst9009, sst9009, gt9015, gt4034, gt4035, gt4036,
-                    gt4037, gt4038, gt4039, gt4040, gt4062, gt4142,
-                    gt4048, gt4049, gt4050, gt4051, gt4057,
+                    itCR1, otCR1, opCR1,
+                    ipCR2, ifCR2, opCR2, ofCR2,
+                    ipCR3, ifCR3, opCR3, ofCR3,
+                    orCR4, oopCR4, oofCR4,
                     isAllGuardsChecked, defectsExist, '-',
                 ], //these are the values that will be input into a single row, order matters
             ]
@@ -102,25 +160,34 @@ module.exports.postSecondaryChecklist = async (req, res) => {
     });
 
     const allDefects = [
-        hd9009, hd9015, hd4034, hd4035, hd4036,
-        hd4037, hd4038, hd4039, hd4040, hd4062,
-        hd4142, hd4048, hd4049, hd4050, hd4051,
-        hd4057, hg9009, hg9015, hg4034, hg4035,
-        hg4036, hg4037, hg4038, hg4039, hg4040,
-        hg4062, hg4142, hg4048, hg4049, hg4050,
-        hg4051, hg4057
+        hdCR1, hdCR2, hdCR3, hdCR4, hdS1A, hdS1B, hdS2A, hdS2B,
+        hdS3A, hdS3B, hdS5, hdC1, hdC1A, hdC1B, hdC2, hdC3A, hdC3B, hdC4A,
+        hdC4B, hdC5, hdC6, hdC7, hdC8, hdC9, hdC11, hdC12, hdC20, hdC21,
+        hdFCD, hdCC1, hdCC3, hdCC4, hdCC5, hdCC6, hdCC7, hdCC9, hdCC10,
+        hdCC11, hdCC12, hdCC13, hdST2, hdST3, hdST8, hdST9, hdBP1, hdBP2,
+        hdBP3, hdBP4, hdVF4, hdVF6, hdVF7, hdVF8, hdVF9, hdVF10, hdVF11, hdVF12,
+
+        hgCR1, hgCR2, hdCR3, hgCR4, hgS1A, hgS1B, hgS2A, hgS2B,
+        hgS3A, hgS3B, hgS5, hgC1, hgC1A, hgC1B, hgC2, hgC3A, hgC3B, hgC4A,
+        hgC4B, hgC5, hgC6, hgC7, hgC8, hgC9, hgC11, hgC12, hgC20, hgC21,
+        hgFCD, hgCC1, hgCC3, hgCC4, hgCC5, hgCC6, hgCC7, hgCC9, hgCC10,
+        hgCC11, hgCC12, hgCC13, hgST2, hgST3, hgST8, hgST9, hgBP1, hgBP2,
+        hgBP3, hgBP4, hgVF4, hgVF6, hgVF7, hgVF8, hgVF9, hgVF10, hgVF11, hgVF12,
     ]
 
     const prefixes = [
-        '1739009', '1439015', '1444034', '1444035',
-        '1444036', '1444037', '1444038', '1444039',
-        '1444040', '1444062', '1744142', '1444048',
-        '1444049', '1444050', '1444051', '1444057',
-
-
+        'CR1', 'CR2', 'CR3', 'CR4', 'S1A', 'S1B', 'S2A',
+        'S2B', 'S3A', 'S3B', 'S5 Pep', 'C1', 'C1A', 'C1B',
+        'C2', 'C3A', 'C3B', 'C4A', 'C4B', 'C5', 'C6', 'C7',
+        'C8', 'C9', 'C11', 'C12', 'C20', 'C21', 'FCD', 'CC1',
+        'CC3', 'CC4', 'CC5', 'CC6', 'CC7', 'CC9', 'CC10', 'CC11',
+        'CC12', 'CC13', 'ST2', 'ST3', 'ST8', 'ST9', 'BP1', 'BP2',
+        'BP3', 'BP4', 'Feeder VF4', 'Feeder VF6', 'Feeder VF7',
+        'Feeder VF8', 'Feeder VF9', 'Feeder VF10', 'Feeder VF11',
+        'Feeder VF12', 'Bulildings'
     ]
 
-    for (let i = 0; i < 16; i++) {
+    for (let i = 0; i < 60; i++) {
         if (allDefects[i]) {
             allDefects[i] = `${prefixes[i]}: ${allDefects[i]}`;
         }
@@ -128,10 +195,12 @@ module.exports.postSecondaryChecklist = async (req, res) => {
     const allDefectsString = allDefects.filter(Boolean).join("\n");
 
     const allPriorities = [
-        p9009, p9015, p4034, p4035, p4036,
-        p4037, p4038, p4039, p4040, p4062,
-        p4142, p4048, p4049, p4050, p4051,
-        p4057
+        pCR1, pCR2, pCR3, pCR4, pS1A, pS1B, pS2A, pS2B,
+        pS3A, pS3B, pS5, pC1, pC1A, pC1B, pC2, pC3A, pC3B, pC4A,
+        pC4B, pC5, pC6, pC7, pC8, pC9, pC11, pC12, pC20, pC21,
+        pFCD, pCC1, pCC3, pCC4, pCC5, pCC6, pCC7, pCC9, pCC10,
+        pCC11, pCC12, pCC13, pST2, pST3, pST8, pST9, pBP1, pBP2,
+        pBP3, pBP4, pVF4, pVF6, pVF7, pVF8, pVF9, pVF10, pVF11, pVF12, pBUILDINGS
     ]
     const allPrioritiesString = allPriorities.filter(Boolean).join("\n");
 
@@ -140,7 +209,7 @@ module.exports.postSecondaryChecklist = async (req, res) => {
         await googleSheets.spreadsheets.values.append({
             auth,
             spreadsheetId,
-            range: "BackLog!A:E",
+            range: "BackLog-S!A:E",
             valueInputOption: "USER_ENTERED",
             resource: {
                 values: [

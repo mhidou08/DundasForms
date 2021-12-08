@@ -36,6 +36,7 @@ module.exports.postPrimaryChecklist = async (req, res) => {
         gSTACKER, dSTACKER, hgSTACKER, hdSTACKER, pSTACKER,
         gDUST, dDUST, hgDUST, hdDUST, pDUST,
         gCOMPRESSOR, dCOMPRESSOR, hgCOMPRESSOR, hdCOMPRESSOR, pCOMPRESSOR,
+        gCBELT, dCBELT, hgCBELT, hdCBELT, pCBELT,
         gC1P, dC1P, hgC1P, hdC1P, pC1P,
         gC2P, dC2P, hgC2P, hdC2P, pC2P,
         gVF1, dVF1, hgVF1, hdVF1, pVF1,
@@ -50,13 +51,13 @@ module.exports.postPrimaryChecklist = async (req, res) => {
     const defectives = {
         dGYRATORY: dGYRATORY, dAISCO: dAISCO, dTELEDYNE: dTELEDYNE,
         dPUMP: dPUMP, dSUB: dSUB, gBELT: dBELT, dSTACKER: dSTACKER,
-        dDUST: dDUST, dCOMPRESSOR: dCOMPRESSOR, dC1P: dC1P, dC2P: dC2P,
+        dDUST: dDUST, dCOMPRESSOR: dCOMPRESSOR, dCBelt: dCBELT, dC1P: dC1P, dC2P: dC2P,
         dVF1: dVF1, dVF2: dVF2, dVF2: dVF2, dVF3: dVF3, dVF5: dVF5,
     }
     const guards = {
         gGYRATORY: gGYRATORY, gAISCO: gAISCO, gTELEDYNE: gTELEDYNE,
         gPUMP: gPUMP, gSUB: gSUB, gBELT: gBELT, gSTACKER: gSTACKER,
-        gDUST: gDUST, gCOMPRESSOR: gCOMPRESSOR, gC1P: gC1P, gC2P: gC2P,
+        gDUST: gDUST, gCOMPRESSOR: gCOMPRESSOR, gCBelt: gCBELT, gC1P: gC1P, gC2P: gC2P,
         gVF1: gVF1, gVF2: gVF2, gVF2: gVF2, gVF3: gVF3, gVF5: gVF5,
     }
 
@@ -96,18 +97,21 @@ module.exports.postPrimaryChecklist = async (req, res) => {
     });
 
     const allDefects = [
-        hdGYRATORY, hdAISCO, hdTELEDYNE, hdPUMP, hdSUB, hdBELT, hdSTACKER, hdDUST, hdCOMPRESSOR, hdC1P, hdC2P, hdVF1, hdVF2, hdVF3, hdVF5,
-        hgGYRATORY, hgAISCO, hgTELEDYNE, hgPUMP, hgSUB, hgBELT, hgSTACKER, hgDUST, hgCOMPRESSOR, hgC1P, hgC2P, hgVF1, hgVF2, hgVF3, hgVF5,
+        hdGYRATORY, hdAISCO, hdTELEDYNE, hdPUMP, hdSUB, hdBELT, hdSTACKER,
+        hdDUST, hdCOMPRESSOR, hdCBELT, hdC1P, hdC2P, hdVF1, hdVF2, hdVF3, hdVF5,
+        hgGYRATORY, hgAISCO, hgTELEDYNE, hgPUMP, hgSUB, hgBELT, hgSTACKER,
+        hgDUST, hgCOMPRESSOR, hgCBELT, hgC1P, hgC2P, hgVF1, hgVF2, hgVF3, hgVF5,
     ]
 
     const prefixes = ['Gyratory', 'Aisco Feeder', 'Teledyne', 'Sump pump',
-        'Primary sub', 'Incline Stacker', 'Stacker', 'Dust Collector', 'Compressor',
-        'Cable Belt', 'Conveyor C1P', 'Stacker C2P', 'Feeder VF1', 'Feeder VF2', 'Feeder VF3', 'Feeder VF5'] // An array of prefixes for each defect
+        'Primary sub', 'Incline Belt', 'Stacker', 'Dust Collector', 'Compressor',
+        'Cable Belt', 'Conveyor C1P', 'Stacker C2P', 'Feeder VF1', 'Feeder VF2',
+        'Feeder VF3', 'Feeder VF5'] // An array of prefixes for each defect
 
     //The for loop is used to cycle through 5 defects (hence why i = 0 and increases up to 5), 
     // and for each defect that has a message (giving it a truthy value), the corresponding prefix is then
     // addded infront of the defect message. It's important that the correct index of the prefix and defect match.
-    for (let i = 0; i < 35; i++) {
+    for (let i = 0; i < 16; i++) {
         if (allDefects[i]) {
             allDefects[i] = `${prefixes[i]}: ${allDefects[i]}`;
         }
@@ -117,7 +121,7 @@ module.exports.postPrimaryChecklist = async (req, res) => {
 
     const allPriorities = [
         pGYRATORY, pAISCO, pTELEDYNE, pPUMP, pSUB,
-        pBELT, pSTACKER, pDUST, pCOMPRESSOR, pC1P,
+        pBELT, pSTACKER, pDUST, pCOMPRESSOR, pCBELT, pC1P,
         pC2P, pVF1, pVF2, pVF3, pVF5,
     ]
     const allPrioritiesString = allPriorities.filter(Boolean).join("\n");

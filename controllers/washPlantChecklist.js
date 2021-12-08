@@ -154,7 +154,7 @@ module.exports.postWashPlantChecklist = async (req, res) => {
     ]
 
     const prefixes = [
-        'WS1', 'WS2', 'Classifer', '60" Single', 'Twin', 'WC1', 'WC2', 'WC3', 'WC4',
+        'WS1', 'WS2', 'Classifer', '60" Single', '36" Twin', 'WC1', 'WC2', 'WC3', 'WC4',
         'W144', 'W142', 'WC5', 'WC6', 'WC6A', 'WC7', 'WC8', 'WC9', 'W146', 'WC10',
         'WC11', 'W148', 'FCN', 'ST 145', 'ST 143', 'ST 123', 'ST 135', 'ST 147',
         'ST 148', 'Clam Gate 1', 'Clam Gate 2', 'Clam Gate 3', 'Clam Gate 4', 'Clam Gate 5',
@@ -162,7 +162,7 @@ module.exports.postWashPlantChecklist = async (req, res) => {
     ]
 
 
-    for (let i = 0; i < 18; i++) {
+    for (let i = 0; i < 38; i++) {
         if (allDefects[i]) {
             allDefects[i] = `${prefixes[i]}: ${allDefects[i]}`;
         }

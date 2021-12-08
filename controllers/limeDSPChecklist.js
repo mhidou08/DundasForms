@@ -132,7 +132,7 @@ module.exports.postLimeDSPChecklist = async (req, res) => {
 
     ]
 
-    for (let i = 0; i < 30; i++) {
+    for (let i = 0; i < 31; i++) {
         if (allDefects[i]) {
             allDefects[i] = `${prefixes[i]}: ${allDefects[i]}`;
         }

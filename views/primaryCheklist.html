@@ -110,14 +110,13 @@
             <!-- "h3" and "h4" are just titles with h3 being the bigger one these can be changed ^ -->
             <h4>Gyratory</h4>
             <div class="formInputs">
-                <!-- These are the Inputs for every specific Part the titles can be changed-->
                 <label class="spacing">
                     <span>Guarding</span>
                     <input type="checkbox" name="gGYRATORY" id="gGYRATORY" value="checked"
-                        onchange="guardChecked('gGYRATORY','hgGYRATORY','Guard GYRATORY Defective')">
+                        onchange="guardChecked('gGYRATORY','hgGYRATORY','Gyratory Guard Defective')">
                 </label>
-                <input id="hgGYRATORY" name="hgGYRATORY" type="hidden" value="Guard GYRATORY Defective">
-                <label class="spacing">
+                <input id="hgGYRATORY" name="hgGYRATORY" type="hidden" value="Gyratory Guard Defective">
+                <label>
                     <span>Defect Present</span>
                     <input type="checkbox" name="dGYRATORY" value="checked"
                         onchange="displayPrompt('defectGYRATORY','hdGYRATORY','pGYRATORY')">
@@ -547,6 +546,57 @@
                 </div>
             </div>
         </section>
+        <section>
+            <!-- repeat of Table Section above just different text, amount of rows and columns -->
+            <button type="button" class="collapsible">Cable Belt Checklist</button>
+            <div class="content">
+                <table>
+                    <tr>
+                        <td>Oil Level</td>
+                        <td>Air Pressure, Drive V-Belts</td>
+                        <td>Drain Air on Tank, Oil on Filter</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <section>
+            <!-- Repeat of the Input Section Above -->
+            <h3>Cable Belt</h3>
+            <h4>Cable Belt</h4>
+            <div class="formInputs">
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gCBELT" id="gCBELT" value="checked"
+                        onchange="guardChecked('gCBELT','hgCBELT','Cable Belt Guard Defective')">
+                </label>
+                <input id="hgCBELT" name="hgCBELT" type="hidden" value="Cable Belt Guard Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dCBELT" value="checked"
+                        onchange="displayPrompt('defectCBELT','hdCBELT','pCBELT')">
+                </label>
+                <div class="hiddenDefect" id="defectCBELT">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdCBELT"
+                            name="hdCBELT" placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pCBELT" id="pCBELT">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+        </section>
 
         <section>
             <!-- repeat of Table Section above just different text, amount of rows and columns -->
@@ -780,9 +830,9 @@
                 <label class="spacing">
                     <span>Guarding</span>
                     <input type="checkbox" name="gVF5" id="gVF5" value="checked"
-                        onchange="guardChecked('gVF5','hgVF5','Guard VF5 Defective')">
+                        onchange="guardChecked('gVF5','hgVF5','VF5 Feeder Guard Defective')">
                 </label>
-                <input id="hgVF5" name="hgVF5" type="hidden" value="Guard VF5 Defective">
+                <input id="hgVF5" name="hgVF5" type="hidden" value="VF5 Feeder Guard Defective">
                 <label class="spacing">
                     <span>Defect Present</span>
                     <input type="checkbox" name="dVF5" value="checked"

@@ -83,7 +83,7 @@ module.exports.postSecondaryChecklist = async (req, res) => {
         gVF10, hgVF10, hdVF10, dVF10, pVF10,
         gVF11, hgVF11, hdVF11, dVF11, pVF11,
         gVF12, hgVF12, hdVF12, dVF12, pVF12,
-        dBUILDINGS, pBUILDINGS
+        hdBUILDINGS, dBUILDINGS, pBUILDINGS
 
 
     } = req.body;
@@ -165,9 +165,9 @@ module.exports.postSecondaryChecklist = async (req, res) => {
         hdC4B, hdC5, hdC6, hdC7, hdC8, hdC9, hdC11, hdC12, hdC20, hdC21,
         hdFCD, hdCC1, hdCC3, hdCC4, hdCC5, hdCC6, hdCC7, hdCC9, hdCC10,
         hdCC11, hdCC12, hdCC13, hdST2, hdST3, hdST8, hdST9, hdBP1, hdBP2,
-        hdBP3, hdBP4, hdVF4, hdVF6, hdVF7, hdVF8, hdVF9, hdVF10, hdVF11, hdVF12,
+        hdBP3, hdBP4, hdVF4, hdVF6, hdVF7, hdVF8, hdVF9, hdVF10, hdVF11, hdVF12, hdBUILDINGS,
 
-        hgCR1, hgCR2, hdCR3, hgCR4, hgS1A, hgS1B, hgS2A, hgS2B,
+        hgCR1, hgCR2, hgCR3, hgCR4, hgS1A, hgS1B, hgS2A, hgS2B,
         hgS3A, hgS3B, hgS5, hgC1, hgC1A, hgC1B, hgC2, hgC3A, hgC3B, hgC4A,
         hgC4B, hgC5, hgC6, hgC7, hgC8, hgC9, hgC11, hgC12, hgC20, hgC21,
         hgFCD, hgCC1, hgCC3, hgCC4, hgCC5, hgCC6, hgCC7, hgCC9, hgCC10,
@@ -187,7 +187,7 @@ module.exports.postSecondaryChecklist = async (req, res) => {
         'Feeder VF12', 'Bulildings'
     ]
 
-    for (let i = 0; i < 60; i++) {
+    for (let i = 0; i < 57; i++) {
         if (allDefects[i]) {
             allDefects[i] = `${prefixes[i]}: ${allDefects[i]}`;
         }

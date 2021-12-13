@@ -56,8 +56,8 @@
             </div>
         </section>
         <section>
-            <button type="button" class="collapsible">Cone Crusher Checklist</button>
-            <div class="content">
+            <button type="button" class="collapsiblesec">Cone Crusher Checklist</button>
+            <div class="contentsec">
                 <table>
                     <tr>
                         <td>Oil Level, Breather</td>
@@ -137,8 +137,8 @@
             </div>
         </section>
         <section>
-            <button type="button" class="collapsible">Canica Crusher Checklist</button>
-            <div class="content">
+            <button type="button" class="collapsiblesec">Canica Crusher Checklist</button>
+            <div class="contentsec">
                 <table>
                     <tr>
                         <td class="checklistTitle">Oil Tank</td>
@@ -271,8 +271,8 @@
             </div>
         </section>
         <section>
-            <button type="button" class="collapsible">HP500 Cone Crusher Checklist</button>
-            <div class="content">
+            <button type="button" class="collapsiblesec">HP500 Cone Crusher Checklist</button>
+            <div class="contentsec">
                 <table>
                     <tr>
                         <td>Unusual Noise, Alarm sys.</td>
@@ -348,8 +348,8 @@
         </section>
 
         <section>
-            <button type="button" class="collapsible">Screen</button>
-            <div class="content">
+            <button type="button" class="collapsiblesec">Screen</button>
+            <div class="contentsec">
                 <table>
                     <tr>
                         <td class="checklistTitle">Autolube</td>
@@ -584,43 +584,10 @@
                     </span>
                 </div>
             </div>
-            <h4>S5 Pep</h4>
-            <div class="formInputs">
-                <!-- These are the Inputs for every specific Part the titles can be changed-->
-                <label class="spacing">
-                    <span>Guarding</span>
-                    <input type="checkbox" name="gS5" id="gS5" value="checked"
-                        onchange="guardChecked('gS5','hgS5','Guard S5 Defective')">
-                </label>
-                <input id="hgS5" name="hgS5" type="hidden" value="Guard S5 Defective">
-                <label class="spacing">
-                    <span>Defect Present</span>
-                    <input type="checkbox" name="dS5" value="checked" onchange="displayPrompt('defectS5','hdS5','pS5')">
-                </label>
-                <div class="hiddenDefect" id="defectS5">
-                    <label class="defectLabel">
-                        <span class="defectTitle">Defect:</span>
-                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdS5" name="hdS5"
-                            placeholder="Type Defect Here"></textarea>
-                    </label>
-                    <span class="prioritySelect">
-                        <span class="defectTitle">Priority:</span>
-                        <select name="pS5" id="pS5">
-                            <option value=""></option>
-                            <option value="1">1: Immediate</option>
-                            <option value="2">2: Next Shutdown (within 24hrs)</option>
-                            <option value="3">3: Next Maintenance Day</option>
-                            <option value="4">4: Backlog</option>
-                            <option value="5">5: Special Project</option>
-                        </select>
-                        <span class="dropdownArrow"></span>
-                    </span>
-                </div>
-            </div>
         </section>
         <section>
-            <button type="button" class="collapsible">Conveyors, Stackers, Buggy Bins</button>
-            <div class="content">
+            <button type="button" class="collapsiblesec">Conveyors, Stackers, Buggy Bins</button>
+            <div class="contentsec">
                 <table>
                     <tr>
                         <td class="checklistTitle">Frame</td>
@@ -1470,108 +1437,6 @@
                     </span>
                 </div>
             </div>
-            <h4>CC9</h4>
-            <div class="formInputs">
-                <!-- These are the Inputs for every specific Part the titles can be changed-->
-                <label class="spacing">
-                    <span>Guarding</span>
-                    <input type="checkbox" name="gCC9" id="gCC9" value="checked"
-                        onchange="guardChecked('gCC9','hgCC9','Guard CC9 Defective')">
-                </label>
-                <input id="hgCC9" name="hgCC9" type="hidden" value="Guard CC9 Defective">
-                <label class="spacing">
-                    <span>Defect Present</span>
-                    <input type="checkbox" name="dCC9" value="checked"
-                        onchange="displayPrompt('defectCC9','hdCC9','pCC9')">
-                </label>
-                <div class="hiddenDefect" id="defectCC9">
-                    <label class="defectLabel">
-                        <span class="defectTitle">Defect:</span>
-                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdCC9" name="hdCC9"
-                            placeholder="Type Defect Here"></textarea>
-                    </label>
-                    <span class="prioritySelect">
-                        <span class="defectTitle">Priority:</span>
-                        <select name="pCC9" id="pCC9">
-                            <option value=""></option>
-                            <option value="1">1: Immediate</option>
-                            <option value="2">2: Next Shutdown (within 24hrs)</option>
-                            <option value="3">3: Next Maintenance Day</option>
-                            <option value="4">4: Backlog</option>
-                            <option value="5">5: Special Project</option>
-                        </select>
-                        <span class="dropdownArrow"></span>
-                    </span>
-                </div>
-            </div>
-            <h4>CC10</h4>
-            <div class="formInputs">
-                <!-- These are the Inputs for every specific Part the titles can be changed-->
-                <label class="spacing">
-                    <span>Guarding</span>
-                    <input type="checkbox" name="gCC10" id="gCC10" value="checked"
-                        onchange="guardChecked('gCC10','hgCC10','Guard CC10 Defective')">
-                </label>
-                <input id="hgCC10" name="hgCC10" type="hidden" value="Guard CC10 Defective">
-                <label class="spacing">
-                    <span>Defect Present</span>
-                    <input type="checkbox" name="dCC10" value="checked"
-                        onchange="displayPrompt('defectCC10','hdCC10','pCC10')">
-                </label>
-                <div class="hiddenDefect" id="defectCC10">
-                    <label class="defectLabel">
-                        <span class="defectTitle">Defect:</span>
-                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdCC10" name="hdCC10"
-                            placeholder="Type Defect Here"></textarea>
-                    </label>
-                    <span class="prioritySelect">
-                        <span class="defectTitle">Priority:</span>
-                        <select name="pCC10" id="pCC10">
-                            <option value=""></option>
-                            <option value="1">1: Immediate</option>
-                            <option value="2">2: Next Shutdown (within 24hrs)</option>
-                            <option value="3">3: Next Maintenance Day</option>
-                            <option value="4">4: Backlog</option>
-                            <option value="5">5: Special Project</option>
-                        </select>
-                        <span class="dropdownArrow"></span>
-                    </span>
-                </div>
-            </div>
-            <h4>CC11</h4>
-            <div class="formInputs">
-                <!-- These are the Inputs for every specific Part the titles can be changed-->
-                <label class="spacing">
-                    <span>Guarding</span>
-                    <input type="checkbox" name="gCC11" id="gCC11" value="checked"
-                        onchange="guardChecked('gCC11','hgCC11','Guard CC11 Defective')">
-                </label>
-                <input id="hgCC11" name="hgCC11" type="hidden" value="Guard CC11 Defective">
-                <label class="spacing">
-                    <span>Defect Present</span>
-                    <input type="checkbox" name="dCC11" value="checked"
-                        onchange="displayPrompt('defectCC11','hdCC11','pCC11')">
-                </label>
-                <div class="hiddenDefect" id="defectCC11">
-                    <label class="defectLabel">
-                        <span class="defectTitle">Defect:</span>
-                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdCC11" name="hdCC11"
-                            placeholder="Type Defect Here"></textarea>
-                    </label>
-                    <span class="prioritySelect">
-                        <span class="defectTitle">Priority:</span>
-                        <select name="pCC11" id="pCC11">
-                            <option value=""></option>
-                            <option value="1">1: Immediate</option>
-                            <option value="2">2: Next Shutdown (within 24hrs)</option>
-                            <option value="3">3: Next Maintenance Day</option>
-                            <option value="4">4: Backlog</option>
-                            <option value="5">5: Special Project</option>
-                        </select>
-                        <span class="dropdownArrow"></span>
-                    </span>
-                </div>
-            </div>
             <h4>CC12</h4>
             <div class="formInputs">
                 <!-- These are the Inputs for every specific Part the titles can be changed-->
@@ -1914,8 +1779,8 @@
             </div>
         </section>
         <section>
-            <button type="button" class="collapsible">Feeders</button>
-            <div class="content">
+            <button type="button" class="collapsiblesec">Feeders</button>
+            <div class="contentsec">
                 <table>
                     <tr>
                         <td>Unusual Sounds</td>
@@ -2202,8 +2067,8 @@
             </div>
         </section>
         <section>
-            <button type="button" class="collapsible">Buildings</button>
-            <div class="content">
+            <button type="button" class="collapsiblesec">Buildings</button>
+            <div class="contentsec">
                 <table>
                     <tr>
                         <td>Material Buildup And Origin</td>
@@ -2266,7 +2131,7 @@
 </body>
 
 <footer>
-    <script src="../public/js/collapsibleBar.js"></script>
+    <script src="../public/js/collapsibleBarSecondary.js"></script>
     <script src="../public/js/displayPrompt.js"></script>
     <script src="../public/js/shortFunctions.js"></script>
     <script src="../public/js/validation.js"></script>

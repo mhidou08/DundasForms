@@ -62,9 +62,6 @@ module.exports.postSecondaryChecklist = async (req, res) => {
         gCC5, hgCC5, hdCC5, dCC5, pCC5,
         gCC6, hgCC6, hdCC6, dCC6, pCC6,
         gCC7, hgCC7, hdCC7, dCC7, pCC7,
-        gCC9, hgCC9, hdCC9, dCC9, pCC9,
-        gCC10, hgCC10, hdCC10, dCC10, pCC10,
-        gCC11, hgCC11, hdCC11, dCC11, pCC11,
         gCC12, hgCC12, hdCC12, dCC12, pCC12,
         gCC13, hgCC13, hdCC13, dCC13, pCC13,
         gST2, hgST2, hdST2, dST2, pST2,
@@ -91,13 +88,12 @@ module.exports.postSecondaryChecklist = async (req, res) => {
     const defectives = {
         dCR1: dCR1, dCR2: dCR2, dCR3: dCR3, dCR4: dCR4,
         dS1A: dS1A, dS1B: dS1B, dS2A: dS2A, dS2B: dS2B,
-        dS3A: dS3A, dS3B: dS3B, dS5: dS5, dC1: dC1, dC1A: dC1A,
+        dS3A: dS3A, dS3B: dS3B, dC1: dC1, dC1A: dC1A,
         dC1B: dC1B, dC2: dC2, dC3A: dC3A, dC3B: dC3B, dC4A: dC4A,
         dC4B: dC4B, dC5: dC5, dC6: dC6, dC7: dC7, gd8: dC8,
         dC9: dC9, dC11: dC11, dC12: dC12, dC20: dC20, dC21: dC21,
         dFCD: dFCD, dCC1: dCC1, dCC3: dCC3, dCC4: dCC4,
-        dCC5: dCC5, dCC6: dCC6, dCC7: dCC7, dCC9: dCC9,
-        dCC10: dCC10, dCC11: dCC11, dCC12: dCC12, dCC13: dCC13,
+        dCC5: dCC5, dCC6: dCC6, dCC7: dCC7, dCC12: dCC12, dCC13: dCC13,
         dST2: dST2, dST3: dST3, dST8: dST8, dST9: dST9,
         dBP1: dBP1, dBP2: dBP2, dBP3: dBP3, dBP4: dBP4,
         dVF4: dVF4, dVF6: dVF6, dVF7: dVF7, dVF8: dVF8,
@@ -106,13 +102,12 @@ module.exports.postSecondaryChecklist = async (req, res) => {
     const guards = {
         gCR1: gCR1, gCR2: gCR2, gCR3: gCR3, gCR4: gCR4,
         gS1A: gS1A, gS1B: gS1B, gS2A: gS2A, gS2B: gS2B,
-        gS3A: gS3A, gS3B: gS3B, gS5: gS5, gC1: gC1, gC1A: gC1A,
+        gS3A: gS3A, gS3B: gS3B, gC1: gC1, gC1A: gC1A,
         gC1B: gC1B, gC2: gC2, gC3A: gC3A, gC3B: gC3B, gC4A: gC4A,
         gC4B: gC4B, gC5: gC5, gC6: gC6, gC7: gC7, gC8: gC8,
         gC9: gC9, gC11: gC11, gC12: gC12, gC20: gC20, gC21: gC21,
         gFCD: gFCD, gCC1: gCC1, gCC3: gCC3, gCC4: gCC4,
-        gCC5: gCC5, gCC6: gCC6, gCC7: gCC7, gCC9: gCC9,
-        gCC10: gCC10, gCC11: gCC11, gCC12: gCC12, gCC13: gCC13,
+        gCC5: gCC5, gCC6: gCC6, gCC7: gCC7, gCC12: gCC12, gCC13: gCC13,
         gST2: gST2, gST3: gST3, gST8: gST8, gST9: gST9,
         gBP1: gBP1, gBP2: gBP2, gBP3: gBP3, gBP4: gBP4,
         gVF4: gVF4, gVF6: gVF6, gVF7: gVF7, gVF8: gVF8,
@@ -161,33 +156,31 @@ module.exports.postSecondaryChecklist = async (req, res) => {
 
     const allDefects = [
         hdCR1, hdCR2, hdCR3, hdCR4, hdS1A, hdS1B, hdS2A, hdS2B,
-        hdS3A, hdS3B, hdS5, hdC1, hdC1A, hdC1B, hdC2, hdC3A, hdC3B, hdC4A,
+        hdS3A, hdS3B, hdC1, hdC1A, hdC1B, hdC2, hdC3A, hdC3B, hdC4A,
         hdC4B, hdC5, hdC6, hdC7, hdC8, hdC9, hdC11, hdC12, hdC20, hdC21,
-        hdFCD, hdCC1, hdCC3, hdCC4, hdCC5, hdCC6, hdCC7, hdCC9, hdCC10,
-        hdCC11, hdCC12, hdCC13, hdST2, hdST3, hdST8, hdST9, hdBP1, hdBP2,
+        hdFCD, hdCC1, hdCC3, hdCC4, hdCC5, hdCC6, hdCC7, hdCC12, hdCC13, hdST2, hdST3, hdST8, hdST9, hdBP1, hdBP2,
         hdBP3, hdBP4, hdVF4, hdVF6, hdVF7, hdVF8, hdVF9, hdVF10, hdVF11, hdVF12, hdBUILDINGS,
 
         hgCR1, hgCR2, hgCR3, hgCR4, hgS1A, hgS1B, hgS2A, hgS2B,
-        hgS3A, hgS3B, hgS5, hgC1, hgC1A, hgC1B, hgC2, hgC3A, hgC3B, hgC4A,
+        hgS3A, hgS3B, hgC1, hgC1A, hgC1B, hgC2, hgC3A, hgC3B, hgC4A,
         hgC4B, hgC5, hgC6, hgC7, hgC8, hgC9, hgC11, hgC12, hgC20, hgC21,
-        hgFCD, hgCC1, hgCC3, hgCC4, hgCC5, hgCC6, hgCC7, hgCC9, hgCC10,
-        hgCC11, hgCC12, hgCC13, hgST2, hgST3, hgST8, hgST9, hgBP1, hgBP2,
+        hgFCD, hgCC1, hgCC3, hgCC4, hgCC5, hgCC6, hgCC7, hgCC12, hgCC13, hgST2, hgST3, hgST8, hgST9, hgBP1, hgBP2,
         hgBP3, hgBP4, hgVF4, hgVF6, hgVF7, hgVF8, hgVF9, hgVF10, hgVF11, hgVF12,
     ]
 
     const prefixes = [
         'CR1', 'CR2', 'CR3', 'CR4', 'S1A', 'S1B', 'S2A',
-        'S2B', 'S3A', 'S3B', 'S5 Pep', 'C1', 'C1A', 'C1B',
+        'S2B', 'S3A', 'S3B', 'C1', 'C1A', 'C1B',
         'C2', 'C3A', 'C3B', 'C4A', 'C4B', 'C5', 'C6', 'C7',
         'C8', 'C9', 'C11', 'C12', 'C20', 'C21', 'FCD', 'CC1',
-        'CC3', 'CC4', 'CC5', 'CC6', 'CC7', 'CC9', 'CC10', 'CC11',
+        'CC3', 'CC4', 'CC5', 'CC6', 'CC7',
         'CC12', 'CC13', 'ST2', 'ST3', 'ST8', 'ST9', 'BP1', 'BP2',
         'BP3', 'BP4', 'Feeder VF4', 'Feeder VF6', 'Feeder VF7',
         'Feeder VF8', 'Feeder VF9', 'Feeder VF10', 'Feeder VF11',
         'Feeder VF12', 'Bulildings'
     ]
 
-    for (let i = 0; i < 57; i++) {
+    for (let i = 0; i < 53; i++) {
         if (allDefects[i]) {
             allDefects[i] = `${prefixes[i]}: ${allDefects[i]}`;
         }
@@ -196,10 +189,9 @@ module.exports.postSecondaryChecklist = async (req, res) => {
 
     const allPriorities = [
         pCR1, pCR2, pCR3, pCR4, pS1A, pS1B, pS2A, pS2B,
-        pS3A, pS3B, pS5, pC1, pC1A, pC1B, pC2, pC3A, pC3B, pC4A,
+        pS3A, pS3B, pC1, pC1A, pC1B, pC2, pC3A, pC3B, pC4A,
         pC4B, pC5, pC6, pC7, pC8, pC9, pC11, pC12, pC20, pC21,
-        pFCD, pCC1, pCC3, pCC4, pCC5, pCC6, pCC7, pCC9, pCC10,
-        pCC11, pCC12, pCC13, pST2, pST3, pST8, pST9, pBP1, pBP2,
+        pFCD, pCC1, pCC3, pCC4, pCC5, pCC6, pCC7, pCC12, pCC13, pST2, pST3, pST8, pST9, pBP1, pBP2,
         pBP3, pBP4, pVF4, pVF6, pVF7, pVF8, pVF9, pVF10, pVF11, pVF12, pBUILDINGS
     ]
     const allPrioritiesString = allPriorities.filter(Boolean).join("\n");

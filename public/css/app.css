@@ -240,6 +240,129 @@ select{
 .active:after {
         content: "\2796"; /* Unicode character for "minus" sign (-) */
 }
+
+/* -----------------------------------------------------------Secondary collabsible bar colour -------------------------------------------------------------*/
+
+.collapsiblesec {
+    /* Style the button that is used to open and close the collapsible content */
+    background-color: #4ff900e7;
+    font-weight: 600 ;
+    color: black;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+}
+.activesec, .collapsiblesec:hover {
+      /* Add a background color to the button if it is clicked on (add the .active class with JS),
+       and when you move the mouse over it (hover) */
+    background-color: #4ff900e7;
+}
+  
+.contentsec {
+      /* Style the collapsible content. Note: hidden by default */
+    padding: 0px 18px;
+    display: none;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #acf888e7;
+    overflow-x: scroll;
+}
+.collapsiblesec:after {
+    content: '\02795'; /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    color: white;
+    float: right;
+    margin-left: 5px;
+}
+.activesec:after {
+        content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+
+/* -----------------------------------------------------------Lime DSP collabsible bar colour -------------------------------------------------------------*/
+
+.collapsibleldsp {
+    /* Style the button that is used to open and close the collapsible content */
+    background-color: #b637ff;
+    font-weight: 600 ;
+    color: black;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+}
+.activeldsp, .collapsibleldsp:hover {
+      /* Add a background color to the button if it is clicked on (add the .active class with JS),
+       and when you move the mouse over it (hover) */
+    background-color: #b637ff;;
+}
+  
+.contentldsp {
+      /* Style the collapsible content. Note: hidden by default */
+    padding: 0px 18px;
+    display: none;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #d9a6f7;
+    overflow-x: scroll;
+}
+.collapsibleldsp:after {
+    content: '\02795'; /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    color: white;
+    float: right;
+    margin-left: 5px;
+}
+.activeldsp:after {
+        content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+/* -----------------------------------------------------------Lime DSP collabsible bar colour -------------------------------------------------------------*/
+
+.collapsiblewp {
+    /* Style the button that is used to open and close the collapsible content */
+    background-color: #32adff;
+    font-weight: 600 ;
+    color: black;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+}
+.activewp, .collapsiblewp:hover {
+      /* Add a background color to the button if it is clicked on (add the .active class with JS),
+       and when you move the mouse over it (hover) */
+    background-color: #32adff;
+}
+  
+.contentwp {
+      /* Style the collapsible content. Note: hidden by default */
+    padding: 0px 18px;
+    display: none;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #8bd1ff;
+    overflow-x: scroll;
+}
+.collapsiblewp:after {
+    content: '\02795'; /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    color: white;
+    float: right;
+    margin-left: 5px;
+}
+.activewp:after {
+        content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+
 /* End of Collapsable Styling */
 
 /* This Disables the default Scrollbar */

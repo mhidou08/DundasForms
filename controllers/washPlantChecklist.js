@@ -158,7 +158,7 @@ module.exports.postWashPlantChecklist = async (req, res) => {
         'W144', 'W142', 'WC5', 'WC6', 'WC6A', 'WC7', 'WC8', 'WC9', 'W146', 'WC10',
         'WC11', 'W148', 'FCN', 'ST 145', 'ST 143', 'ST 123', 'ST 135', 'ST 147',
         'ST 148', 'Clam Gate 1', 'Clam Gate 2', 'Clam Gate 3', 'Clam Gate 4', 'Clam Gate 5',
-        'Clam Gate 6', 'Slurry Pump', 'Fr. Water Pump', 'North Sand Slurry', 'South Sand Slurry'
+        'Clam Gate 6', 'Slurry Pump', 'Fr. Water Pump', 'North Sand Slurry', 'South Sand Slurry',
     ]
 
 
